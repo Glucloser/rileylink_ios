@@ -115,7 +115,10 @@ public class MinimedPumpManager: RileyLinkPumpManager, PumpManager {
             /// characteristic which can cause the app to wake. For most users, the G5 Transmitter and
             /// G4 Receiver are reliable as hearbeats, but users who find their resources extremely constrained
             /// due to greedy apps or older devices may choose to always enable the timer by always setting `true`
-            self.rileyLinkDeviceProvider.timerTickEnabled = self.isPumpDataStale || (self.pumpManagerDelegate?.pumpManagerShouldProvideBLEHeartbeat(self) == true)
+            // (nl) 3/24/19 I set this to true because data is often
+          // stale on iPhone 6s
+          self.rileyLinkDeviceProvider.timerTickEnabled = true
+            //self.rileyLinkDeviceProvider.timerTickEnabled = self.isPumpDataStale || (self.pumpManagerDelegate?.pumpManagerShouldProvideBLEHeartbeat(self) == true)
         }
     }
 
